@@ -19,15 +19,10 @@ for u in all_users:
     login_date = datetime(2020,1,1)
   else:
     login_date = datetime.strptime(login[0:9],"%Y-%M-%d")
-  print ((datetime.today() - login_date).days)
-  print (u != looker_api_user)
   if (datetime.today()-login_date).days > days_to_disable and u != looker_api_user:
     ids_to_disable.append(uid)
-print (ids_to_disable)
 
-"""
 for u in ids_to_disable:
   user_info_body =  looker.get_user(u)
   user_info_body['is_disabled'] = True
   looker.update_user(u,user_info_body)
-"""
